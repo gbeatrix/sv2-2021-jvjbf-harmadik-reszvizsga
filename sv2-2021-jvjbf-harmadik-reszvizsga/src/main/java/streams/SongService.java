@@ -11,6 +11,9 @@ public class SongService {
     private List<Song> songs = new ArrayList<>();
 
     public void addSong(Song song) {
+        if (song == null) {
+            throw new IllegalArgumentException("Song cannot be null");
+        }
         songs.add(song);
     }
 

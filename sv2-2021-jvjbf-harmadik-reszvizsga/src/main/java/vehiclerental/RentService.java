@@ -21,6 +21,9 @@ public class RentService {
     }
 
     public void registerUser(User user) {
+        if (user == null) {
+            throw new IllegalStateException("User cannot be null");
+        }
         if (users.contains(user)) {
             throw new UserNameIsAlreadyTakenException("Username is taken!");
         }
@@ -28,6 +31,9 @@ public class RentService {
     }
 
     public void addRentable(Rentable rentable) {
+        if (rentable == null) {
+            throw new IllegalArgumentException("Rentable cannot be null");
+        }
         rentables.add(rentable);
     }
 
@@ -53,6 +59,8 @@ public class RentService {
             User user = actualRenting.remove(rentable);
             rentable.closeRent();
             user.minusBalance(rentable.calculateSumPrice(minutes));
+        } else {
+            throw new IllegalArgumentException("Cannot find rent.");
         }
     }
 }

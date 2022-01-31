@@ -8,6 +8,9 @@ public class Movie {
     private LocalTime startTime;
 
     public Movie(String title, LocalTime startTime) {
+        if (title == null || startTime == null) {
+            throw new IllegalArgumentException("Movie title and start time cannot be null");
+        }
         this.title = title;
         this.startTime = startTime;
     }

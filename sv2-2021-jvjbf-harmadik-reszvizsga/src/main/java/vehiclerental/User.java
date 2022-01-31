@@ -11,6 +11,12 @@ public class User {
         this.userName = userName;
         this.email = email;
         this.balance = balance;
+        if (balance < 0) {
+            throw new IllegalArgumentException("Balance cannot be negative");
+        }
+        if (userName == null) {
+            throw new IllegalArgumentException("Username cannot be null");
+        }
     }
 
     public String getUserName() {

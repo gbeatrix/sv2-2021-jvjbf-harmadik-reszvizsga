@@ -11,6 +11,9 @@ public class Song {
     private LocalDate release;
 
     public Song(String title, int length, List<String> performers, LocalDate release) {
+        if (title == null || performers == null || release == null) {
+            throw new IllegalArgumentException("Song parameters cannot be null");
+        }
         this.title = title;
         this.length = length;
         this.performers = new ArrayList<>(performers);
